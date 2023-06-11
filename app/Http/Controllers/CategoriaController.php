@@ -13,7 +13,13 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::where('estado',1)->get();
+        $categorias = Categoria::where('estado', 1)->get();
+        return view('categorias.index', compact('categorias'));
+    }
+
+    public function indexfiltro(Request $request)
+    {
+        $categorias = Categoria::where('estado', $request->estado)->get();
         return view('categorias.index', compact('categorias'));
     }
 
@@ -57,8 +63,6 @@ class CategoriaController extends Controller
     {
         $categoria->update($request->all());
         return redirect()->route('categorias.index');
-
-        
     }
 
     /**

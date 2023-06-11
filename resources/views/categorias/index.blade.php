@@ -14,6 +14,22 @@
 
     <a href="{{ route('categorias.create') }}">CREAR UN CATEGORIA</a>
 
+    {!! Form::open([
+        'route' => 'categorias.filtro',
+        'autocomplete' => 'off',
+    ]) !!}
+
+
+    <select name="estado" id="">
+        <option value="1"> ACTIVO</option>
+
+        <option value="2"> INACTIVO</option>
+    </select>
+
+    <button type="submit">Filtrar</button>
+
+    {!! Form::close() !!}
+
     <table>
         <thead>
             <tr>
@@ -32,10 +48,10 @@
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->nombre }}</td>
                     <td>
-                        <a href="{{route('categorias.edit', $categoria)}}">Editar</a>
+                        <a href="{{ route('categorias.edit', $categoria) }}">Editar</a>
 
 
-                        <form action="{{route('categorias.destroy', $categoria)}}" method="POST">
+                        <form action="{{ route('categorias.destroy', $categoria) }}" method="POST">
 
                             @csrf
                             @method('DELETE')

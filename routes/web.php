@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::post('categorias-filtro', [CategoriaController::class, 'indexfiltro'])->name('categorias.filtro');
 Route::resource('categorias', CategoriaController::class);
